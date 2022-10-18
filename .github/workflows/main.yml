@@ -7,14 +7,18 @@ jobs:
   static:
     name: Static formatters and analyzers
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        threads: [ OFF, ON ]
     steps:
       - uses: actions/checkout@v3
 
       - name: Cmake
         run: |
           mkdir build && cd build
-          make ..
-          make build .
+          cmake -DCMAKE_BUILD_TYPE=Debug \
+                -DUSE_THREADS=${{ matrix.threads }} \
+                ..
       - name: clang-format
         run: |
           echo "apt-get install clang-format log"
