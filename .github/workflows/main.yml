@@ -7,9 +7,6 @@ jobs:
   static:
     name: Static formatters and analyzers
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        threads: [ OFF, ON ]
     steps:
       - uses: actions/checkout@v3
 
@@ -17,7 +14,6 @@ jobs:
         run: |
           mkdir build && cd build
           cmake -DCMAKE_BUILD_TYPE=Debug \
-                -DUSE_THREADS=${{ matrix.threads }} \
                 ..
       - name: clang-format
         run: |
