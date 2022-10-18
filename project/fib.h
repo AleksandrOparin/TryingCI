@@ -1,6 +1,6 @@
-#ifndef TEST_H
-#define TEST_H
+#ifndef PROJECT_FIB_H_
+#define PROJECT_FIB_H_
 
 int fib(int n);
 
-#endif  // TEST_H
+#endif  // PROJECT_FIB_H_
