@@ -22,10 +22,10 @@ function check_log() {
 }
 
 print_header "RUN clang-format"
-check_log "clang-format --dry-run -Werror project/*.cpp project/*.h"
+check_log "clang-format --dry-run project/*.cpp project/*.h"
 
 print_header "RUN clang-tidy"
-check_log "clang-tidy project/*.cpp project/*.h --"
+check_log "clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include"
 
 print_header "RUN cppcheck"
 

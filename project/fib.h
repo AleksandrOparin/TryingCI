@@ -3,4 +3,4 @@
 
 int fib(int n);
 
-#endif // TEST_H
+#endif  // TEST_H

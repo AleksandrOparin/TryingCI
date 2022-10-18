@@ -21,3 +21,13 @@ jobs:
           sudo apt-get install -y clang-format
           echo "clang-format log"
           clang-format --dry-run -Werror project/*.cpp project/*.h
+        continue-on-error: true
+
+      - name: clang-tidy
+        run: |
+          echo "apt-get install clang-tidy log"
+          sudo apt-get install -y clang-tidy
+          echo "clang-tidy log"
+          clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include
+        continue-on-error: true
+        

@@ -1,13 +1,13 @@
 #include "fib.h"
 
 int fib(int n) {
-  if (n <= 1) {
-    return n;
-  }
+	if (n <= 1) {
+		return n;
+	}
 
-  return fib(n - 1) + fib(n - 2);
+	int* a = nullptr;
 
-  return 0;
+	return fib(n - 1) + fib(n - 2);
 }
 
 // size_t timer_from(unsigned char from) {

@@ -1,0 +1,11 @@
+BasedOnStyle: Microsoft
+IndentWidth: 3
+UseTab: Always
+TabWidth: 3
+BreakBeforeBraces: Attach
+DerivePointerAlignment: false
+PointerAlignment: Left
+SpacesBeforeTrailingComments: 2
+IndentCaseLabels: true
+AllowShortBlocksOnASingleLine: true
+ColumnLimit: 50
