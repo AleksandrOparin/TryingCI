@@ -7,15 +7,15 @@ int fib(int n) {
         return n;
     }
 
-    int* a = new int;
-    // delete a;   // Some bad comment
+    // int* a = new int;
+    // delete a;  // Some bad comment
 
-    return fib(n - 1) + fib(n - 2); //
+    return fib(n - 1) + fib(n - 2);  //
 }
 
 int func() {
     int a = 5;
-    float b;
-    for (int i = 0; i < 5; ++i)
+    // float b;
+    for (int i = 0; i < a; ++i)
         std::cout << i << " ";
 }
