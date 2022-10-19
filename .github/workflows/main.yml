@@ -7,10 +7,23 @@ jobs:
   check:
     name: Static formatters and analyzers
     runs-on: ubuntu-latest
-    container: leshiy1295/gcc_linters
+    # container: leshiy1295/gcc_linters
     steps:
       - uses: actions/checkout@v2 
-      - run: make check
+      - name: Install all dependencies
+        run: |
+          sudo apt-get install -y clang-format
+          sudo apt-get install -y clang-tidy
+          sudo apt-get install python3-pip
+          pip install cpplint
+          sudo apt-get install cppcheck
+          sudo apt-get install -y clang-tools
+
+      - name: Run formatters and analyzers
+        run: make check
+
+
+
   # static:
   #   name: Static formatters and analyzers
   #   runs-on: ubuntu-latest
