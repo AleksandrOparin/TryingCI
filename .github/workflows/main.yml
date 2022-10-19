@@ -18,9 +18,6 @@ jobs:
           pip install cpplint
           sudo apt-get install cppcheck
           sudo apt-get install -y clang-tools
-          sudo apt-get install libc6-dbg
-          sudo apt-get install cmake
-          sudo apt-get install libgtest-dev
           VERSION=1.1.0; \
           curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" \
           | sudo tar -C /opt -xJ && \
@@ -28,7 +25,7 @@ jobs:
 
       - name: Run formatters and analyzers
         run: |
-          chmod 444 ./linters/ && make check
+          chmod 777 ./linters && make check
 
 
 
