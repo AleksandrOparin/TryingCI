@@ -7,11 +7,11 @@ int fib(int n) {
 
 	// int* a;	//
 
-	return fib(n - 1) + fib(n - 2);	// Some comment
+	return fib(n - 1) + fib(n - 2);	//  Some comment
 }
 
 int func() {
-   return 0;
+	return 0;
 }
 
 // size_t timer_from(unsigned char from) {

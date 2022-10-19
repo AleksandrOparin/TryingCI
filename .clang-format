@@ -1,3 +1,4 @@
+Language: Cpp
 BasedOnStyle: Microsoft
 IndentWidth: 3
 UseTab: Always
@@ -8,4 +9,4 @@ PointerAlignment: Left
 SpacesBeforeTrailingComments: 2
 IndentCaseLabels: true
 AllowShortBlocksOnASingleLine: true
-ColumnLimit: 100
+ColumnLimit: 110

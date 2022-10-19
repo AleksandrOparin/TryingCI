@@ -31,13 +31,13 @@ jobs:
           clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include
         continue-on-error: true
 
-      - name: Cpplint
-        run: |
-          echo "pip install cpplint"
-          pip install cpplint
-          echo "cpplint log"
-          cpplint project/*.cpp project/*.h
-        continue-on-error: true
+      # - name: Cpplint
+      #   run: |
+      #     echo "pip install cpplint"
+      #     pip install cpplint
+      #     echo "cpplint log"
+      #     cpplint project/*.cpp project/*.h
+      #   continue-on-error: true
 
       - name: Cppcheck
         run: |
