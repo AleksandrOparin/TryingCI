@@ -40,7 +40,7 @@ cd ..
 
 print_header "RUN infer"
 cd build
-check_log "infer run -- clang -c ./project/fib.cpp" "Error"
+check_log "infer run -- clang -c ../project/fib.cpp" "Error"
 cd ..
 
 print_header "SUCCESS"
