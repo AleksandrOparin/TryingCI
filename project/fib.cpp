@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "fib.h"
 
 int fib(int n) {
@@ -5,23 +7,14 @@ int fib(int n) {
         return n;
     }
 
-    int* a = new int;  //
-             delete a;          // Some bad comment
+    int* a = new int;
+    // delete a;   // Some bad comment
 
-    return fib(n - 1) + fib(n - 2); }
-
-int func() {
-    double b = 6.0;
-    int a = b;
-
-    
+    return fib(n - 1) + fib(n - 2); //
 }
 
-// size_t timer_from(unsigned char from) {
-//     size_t counter;
-//     for (unsigned char i = from; i >= 0; --i) {
-//         ++counter;
-//         printf(i);
-//     }
-//     return counter;
-// }
+int func() {
+    int a = 5;
+    for (int i = 0; i < 5; ++i)
+        std::cout << i << " ";
+}

@@ -22,19 +22,21 @@ function check_log() {
 }
 
 print_header "RUN clang-format"
-# check_log "clang-format --dry-run project/*.cpp project/*.h"
+check_log "clang-format project/*.cpp project/*.h --dry-run --Werror" "Error (?:reading|while processing)"
 
 print_header "RUN clang-tidy"
-# check_log "clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include"
+check_log "clang-tidy project/*.cpp project/*.h -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* -warnings-as-errors=* -- -DDEBUG -I ./include" "Error (?:reading|while processing)"
 
 print_header "RUN cpplint"
-# check_log "cpplint project/*.cpp project/*.h"
+check_log "cpplint project/*.cpp project/*.h" "Can't open for reading"
 
 print_header "RUN cppcheck"
-# check_log "cppcheck -q -j4 --enable=performance,portability,warning,style project/*.cpp project/*.h"
+check_log "cppcheck project/*.cpp project/*.h -q -j4 --enable=performance,portability,warning,style --error-exitcode=1" "\(information\)"
 
 print_header "RUN scan-build"
-# check_log "scan-build -o ./project make"
+cd build
+check_log "scan-build --show-description --status-bugs -stats -o ./project make -j4" "Error"
+cd ..
 
 
 
