@@ -10,6 +10,12 @@ jobs:
     # container: leshiy1295/gcc_linters
     steps:
       - uses: actions/checkout@v3
+      - name: Cmake
+        run: |
+          mkdir build && cd build
+          cmake -DCMAKE_BUILD_TYPE=Debug \
+                ..
+                
       - name: Install all dependencies
         run: |
           sudo apt-get install -y clang-format

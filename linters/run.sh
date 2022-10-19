@@ -34,7 +34,6 @@ print_header "RUN cppcheck"
 check_log "cppcheck project/*.cpp project/*.h -q -j4 --enable=performance,portability,warning,style --error-exitcode=1" "\(information\)"
 
 print_header "RUN scan-build"
-mkdir build
 cd build
 check_log "scan-build --show-description --status-bugs -stats -o ./project make -j4" "Error"
 cd ..
