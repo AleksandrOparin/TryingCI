@@ -8,4 +8,4 @@ PointerAlignment: Left
 SpacesBeforeTrailingComments: 2
 IndentCaseLabels: true
 AllowShortBlocksOnASingleLine: true
-ColumnLimit: 50
+ColumnLimit: 100

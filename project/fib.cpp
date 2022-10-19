@@ -5,9 +5,13 @@ int fib(int n) {
 		return n;
 	}
 
-	int* a = nullptr;
+	// int* a;	//
 
-	return fib(n - 1) + fib(n - 2);
+	return fib(n - 1) + fib(n - 2);	// Some comment
+}
+
+int func() {
+   return 0;
 }
 
 // size_t timer_from(unsigned char from) {
