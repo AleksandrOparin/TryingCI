@@ -38,6 +38,7 @@ print_header "RUN scan-build"
 # check_log "scan-build --show-description --status-bugs -stats -o ./project make -j4" "Error"
 # cd ..
 
-
+print_header "RUN infer"
+# infer run -- make
 
 print_header "SUCCESS"

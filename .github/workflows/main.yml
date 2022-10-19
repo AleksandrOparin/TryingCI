@@ -21,9 +21,15 @@ jobs:
           sudo apt-get install libc6-dbg
           sudo apt-get install cmake
           sudo apt-get install libgtest-dev
+          VERSION=1.1.0; \
+          curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" \
+          | sudo tar -C /opt -xJ && \
+          sudo ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
 
       - name: Run formatters and analyzers
-        run: make check
+        run: |
+          chmod 777 ./linters/
+          make check
 
 
 
