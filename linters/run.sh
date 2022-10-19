@@ -39,8 +39,8 @@ print_header "RUN scan-build"
 # cd ..
 
 print_header "RUN infer"
-cd build
-check_log "infer run -- make"
-cd ..
+# cd build
+check_log "infer run -- clang -c project/fib.cpp"
+# cd ..
 
 print_header "SUCCESS"
