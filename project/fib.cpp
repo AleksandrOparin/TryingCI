@@ -15,6 +15,7 @@ int fib(int n) {
 
 int func() {
     int a = 5;
+    float b;
     for (int i = 0; i < 5; ++i)
         std::cout << i << " ";
 }
