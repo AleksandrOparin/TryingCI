@@ -21,6 +21,11 @@ function check_log() {
     fi
 }
 
+print_header "RUN infer"
+cd build
+check_log "infer run -- clang -c ./project/fib.cpp" "Error"
+cd ..
+
 print_header "RUN clang-format"
 check_log "clang-format project/*.cpp project/*.h --dry-run --Werror" "Error (?:reading|while processing)"
 
@@ -36,11 +41,6 @@ check_log "cppcheck project/*.cpp project/*.h -q -j4 --enable=performance,portab
 print_header "RUN scan-build"
 # cd build
 # check_log "scan-build --show-description --status-bugs -stats -o ./project make -j4" "Error"
-# cd ..
-
-print_header "RUN infer"
-# cd build
-check_log "infer run -- clang -c project/fib.cpp"
 # cd ..
 
 print_header "SUCCESS"
