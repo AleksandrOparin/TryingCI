@@ -4,50 +4,57 @@ on:
   push:
 
 jobs:
-  static:
+  check:
     name: Static formatters and analyzers
     runs-on: ubuntu-latest
+    container: leshiy1295/gcc_linters
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2 
+      - run: make check
+  # static:
+  #   name: Static formatters and analyzers
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Cmake
-        run: |
-          mkdir build && cd build
-          cmake -DCMAKE_BUILD_TYPE=Debug \
-                ..
-      - name: Clang-format
-        run: |
-          echo "apt-get install clang-format"
-          sudo apt-get install -y clang-format
-          echo "clang-format log"
-          clang-format --dry-run -Werror project/*.cpp project/*.h
+  #     - name: Cmake
+  #       run: |
+  #         mkdir build && cd build
+  #         cmake -DCMAKE_BUILD_TYPE=Debug \
+  #               ..
+  #     - name: Clang-format
+  #       run: |
+  #         echo "apt-get install clang-format"
+  #         sudo apt-get install -y clang-format
+  #         echo "clang-format log"
+  #         clang-format --dry-run -Werror project/*.cpp project/*.h
 
-      - name: Clang-tidy
-        run: |
-          echo "apt-get install clang-tidy"
-          sudo apt-get install -y clang-tidy
-          echo "clang-tidy log"
-          clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include
+  #     - name: Clang-tidy
+  #       run: |
+  #         echo "apt-get install clang-tidy"
+  #         sudo apt-get install -y clang-tidy
+  #         echo "clang-tidy log"
+  #         clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include
 
-      - name: Cpplint
-        run: |
-          echo "pip install cpplint"
-          pip install cpplint
-          echo "cpplint log"
-          cpplint project/*.cpp project/*.h
+  #     - name: Cpplint
+  #       run: |
+  #         echo "pip install cpplint"
+  #         pip install cpplint
+  #         echo "cpplint log"
+  #         cpplint project/*.cpp project/*.h
 
-      - name: Cppcheck
-        run: |
-          echo "apt-get install cppcheck"
-          sudo apt-get install cppcheck
-          echo "cppcheck log"
-          cppcheck -q -j4 project/*.cpp project/*.h
+  #     - name: Cppcheck
+  #       run: |
+  #         echo "apt-get install cppcheck"
+  #         sudo apt-get install cppcheck
+  #         echo "cppcheck log"
+  #         cppcheck -q -j4 project/*.cpp project/*.h
 
-      - name: Scan-build
-        run: |
-          echo "apt-get install clang-tools log"
-          sudo apt-get install -y clang-tools
-          cd build
-          echo "scan-build log"
-          scan-build -o ../project make
+  #     - name: Scan-build
+  #       run: |
+  #         echo "apt-get install clang-tools log"
+  #         sudo apt-get install -y clang-tools
+  #         cd build
+  #         echo "scan-build log"
+  #         scan-build -o ../project make
 
