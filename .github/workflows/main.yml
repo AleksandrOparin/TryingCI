@@ -28,8 +28,7 @@ jobs:
 
       - name: Run formatters and analyzers
         run: |
-          chmod 777 ./linters/
-          make check
+          chmod 444 ./linters/ && make check
 
 
 
