@@ -1,17 +1,20 @@
 #include "fib.h"
 
 int fib(int n) {
-	if (n <= 1) {
-		return n;
-	}
+    if (n <= 1) {
+        return n;
+    }
 
-	// int* a;	//
+    int* a = new int;  //
+             delete a;          // Some bad comment
 
-	return fib(n - 1) + fib(n - 2);	//  Some comment
-}
+    return fib(n - 1) + fib(n - 2); }
 
 int func() {
-	return 0;
+    double b = 6.0;
+    int a = b;
+
+    
 }
 
 // size_t timer_from(unsigned char from) {

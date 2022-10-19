@@ -55,4 +55,3 @@ jobs:
           echo "scan-build log"
           scan-build -o ../project make
         continue-on-error: true
-
