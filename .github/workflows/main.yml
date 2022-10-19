@@ -25,7 +25,7 @@ jobs:
 
       - name: Run formatters and analyzers
         run: |
-          chmod -R 444 ./linters && ./linters/run.sh
+          chmod -R 755 ./linters && ./linters/run.sh
 
 
 
