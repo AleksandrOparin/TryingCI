@@ -7,7 +7,7 @@ jobs:
   check:
     name: Static formatters and analyzers
     runs-on: ubuntu-latest
-    container: vvinokurshin/project_cpp
+    container: vvinokurshin/project_cpp:v1
     steps:
       - uses: actions/checkout@v3
       - name: Cmake
