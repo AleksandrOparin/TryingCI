@@ -18,67 +18,22 @@ jobs:
                 
       - name: Install all dependencies
         run: |
-          sudo apt-get install -y clang-format
-          sudo apt-get install -y clang-tidy
-          sudo apt-get install python3-pip
-          pip install cpplint
-          sudo apt-get install cppcheck
-          sudo apt-get install -y clang-tools
-          VERSION=1.1.0; \
-          curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" \
-          | sudo tar -C /opt -xJ && \
-          sudo ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
-
+          docker pull vvinokurshin/project_cpp
       - name: Run formatters and analyzers
         run: |
           chmod -R 755 ./linters && make check
 
+      #     sudo apt-get install -y clang-format
+      #     sudo apt-get install -y clang-tidy
+      #     sudo apt-get install python3-pip
+      #     pip install cpplint
+      #     sudo apt-get install cppcheck
+      #     sudo apt-get install -y clang-tools
+      #     VERSION=1.1.0; \
+      #     curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" \
+      #     | sudo tar -C /opt -xJ && \
+      #     sudo ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
 
-
-  # static:
-  #   name: Static formatters and analyzers
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-
-  #     - name: Cmake
-  #       run: |
-  #         mkdir build && cd build
-  #         cmake -DCMAKE_BUILD_TYPE=Debug \
-  #               ..
-  #     - name: Clang-format
-  #       run: |
-  #         echo "apt-get install clang-format"
-  #         sudo apt-get install -y clang-format
-  #         echo "clang-format log"
-  #         clang-format --dry-run -Werror project/*.cpp project/*.h
-
-  #     - name: Clang-tidy
-  #       run: |
-  #         echo "apt-get install clang-tidy"
-  #         sudo apt-get install -y clang-tidy
-  #         echo "clang-tidy log"
-  #         clang-tidy -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* project/*.cpp project/*.h -- -DDEBUG -I ./include
-
-  #     - name: Cpplint
-  #       run: |
-  #         echo "pip install cpplint"
-  #         pip install cpplint
-  #         echo "cpplint log"
-  #         cpplint project/*.cpp project/*.h
-
-  #     - name: Cppcheck
-  #       run: |
-  #         echo "apt-get install cppcheck"
-  #         sudo apt-get install cppcheck
-  #         echo "cppcheck log"
-  #         cppcheck -q -j4 project/*.cpp project/*.h
-
-  #     - name: Scan-build
-  #       run: |
-  #         echo "apt-get install clang-tools log"
-  #         sudo apt-get install -y clang-tools
-  #         cd build
-  #         echo "scan-build log"
-  #         scan-build -o ../project make
-
+      # - name: Run formatters and analyzers
+      #   run: |
+      #     chmod -R 755 ./linters && make check

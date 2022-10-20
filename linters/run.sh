@@ -31,7 +31,7 @@ print_header "RUN cpplint"
 check_log "cpplint project/*.cpp project/*.h" "Can't open for reading"
 
 print_header "RUN cppcheck"
-check_log "cppcheck project/*.cpp project/*.h -q -j4 --enable=performance,portability,warning,style --error-exitcode=1" "\(information\)"
+check_log "cppcheck project/*.cpp project/*.h -q -j4 --enable=performance,portability,warning --error-exitcode=1" "\(information\)"
 
 print_header "RUN scan-build"
 cd build
