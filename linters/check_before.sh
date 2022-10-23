@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source run.sh
+. $(dirname "$0")/run.sh
 
 print_header "RUN clang-format"
 check_log "clang-format project/*.cpp project/*.h --dry-run --Werror" "Error (?:reading|while processing)"
