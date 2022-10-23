@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source run.sh
+source ./run.sh
 
 print_header "RUN scan-build"
 cd build

@@ -10,30 +10,16 @@ jobs:
     container: vvinokurshin/project_cpp:v1
     steps:
       - uses: actions/checkout@v3
+      - name: Run formatters and analyzers before build
+        run: |
+          chmod -R 755 ./linters && make check_before
+
       - name: Cmake
         run: |
           mkdir build && cd build
           cmake -DCMAKE_BUILD_TYPE=Debug \
                 ..
-                
-      # - name: Install all dependencies
-      #   run: |
-      #     docker pull vvinokurshin/project_cpp
-      - name: Run formatters and analyzers
+
+      - name: Run formatters and analyzers after build
         run: |
           chmod -R 755 ./linters && make check_before
-
-      #     sudo apt-get install -y clang-format
-      #     sudo apt-get install -y clang-tidy
-      #     sudo apt-get install python3-pip
-      #     pip install cpplint
-      #     sudo apt-get install cppcheck
-      #     sudo apt-get install -y clang-tools
-      #     VERSION=1.1.0; \
-      #     curl -sSL "https://github.com/facebook/infer/releases/download/v$VERSION/infer-linux64-v$VERSION.tar.xz" \
-      #     | sudo tar -C /opt -xJ && \
-      #     sudo ln -s "/opt/infer-linux64-v$VERSION/bin/infer" /usr/local/bin/infer
-
-      # - name: Run formatters and analyzers
-      #   run: |
-      #     chmod -R 755 ./linters && make check
