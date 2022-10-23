@@ -21,7 +21,7 @@ jobs:
       #     docker pull vvinokurshin/project_cpp
       - name: Run formatters and analyzers
         run: |
-          chmod -R 755 ./linters && make check
+          chmod -R 755 ./linters && make check_before
 
       #     sudo apt-get install -y clang-format
       #     sudo apt-get install -y clang-tidy
