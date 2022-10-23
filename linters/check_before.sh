@@ -14,10 +14,4 @@ check_log "cpplint project/*.cpp project/*.h" "Can't open for reading"
 print_header "RUN cppcheck"
 check_log "cppcheck project/*.cpp project/*.h -q -j4 --enable=performance,portability,warning --error-exitcode=1" "\(information\)"
 
-print_header "RUN infer"
-mkdir build
-cd build
-check_log "infer run -- clang -c ../project/*.cpp ../project/*.h" "Error"
-cd ..
-
 print_header "SUCCESS"
